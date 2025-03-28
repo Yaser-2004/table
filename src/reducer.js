@@ -5,6 +5,8 @@ export const initialState = {
     password: "",
   };
   
+  // This reducer function manages the state of the authentication form
+  // It takes the current state and an action as arguments and returns the new state
   export const reducer = (state, action) => {
     switch (action.type) {
       case "SET_NAME":

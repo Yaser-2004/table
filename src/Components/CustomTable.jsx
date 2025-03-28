@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import data from "../../data.json";
 
 const CustomTable = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const rowsPerPage = 6;
-  const [searchQuery, setSearchQuery] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); // State to manage current page
+  const rowsPerPage = 6; // Number of rows per page
+  const [searchQuery, setSearchQuery] = useState(""); // State to manage search query
   const [sortOrder, setSortOrder] = useState(""); // State to manage sort order
 
   // Filtering the data based on the search query
@@ -12,6 +12,8 @@ const CustomTable = () => {
     item.first_name.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  // Sorting the filtered data based on the sort order
+  // If sortOrder is empty, no sorting is applied
   const sortedData = [...filteredData].sort((a, b) => {
         if (sortOrder === 'asc') {
             return a.first_name.localeCompare(b.first_name);
@@ -65,7 +67,7 @@ const CustomTable = () => {
 
         <tbody>
           {currentRows.length > 0 ? (
-            currentRows.map((item) => (
+            currentRows.map((item) => ( // Displaying each row of data
               <tr key={item.id} className="max-sm:text-sm">
                 <td className="py-3 max-sm:py-2 max-sm:hidden">{item.id}.</td>
                 <td className="py-3 max-sm:py-2">{item.first_name}</td>

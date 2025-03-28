@@ -3,20 +3,22 @@ import { useNavigate } from "react-router-dom";
 import { reducer, initialState } from "../reducer.js";
 
 const Auth = ({ setIsAuthenticated }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
-  const [isSignUp, setIsSignUp] = useState(true);
-  const [error, setError] = useState("");
+  const [state, dispatch] = useReducer(reducer, initialState); // State management using reducer
+  const [isSignUp, setIsSignUp] = useState(true); // Toggle between Sign Up and Login
+  const [error, setError] = useState(""); // Error message state
   const navigate = useNavigate();
 
+  // Function to handle form submission
+  // It prevents the default form submission, validates the input fields, and sets the user data in local storage
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
 
-    if (!state.email || !state.password) {
+    if (!state.email || !state.password) { // Required field validation
         setError("All fields are required");
         return;
     }
-    if (state.password.length < 6) {
+    if (state.password.length < 6) {  // Password validation
     setError("Password must be at least 6 characters long");
     return;
     }

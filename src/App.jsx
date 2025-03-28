@@ -7,8 +7,11 @@ import { useEffect, useState } from 'react';
 
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("user") !== null);
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("user") !== null); // Check if user is authenticated on initial load
+  // useState hook to manage authentication state
 
+  // useEffect hook to listen for changes in local storage
+  // and update the authentication state accordingly
   useEffect(() => {
     const handleStorageChange = () => {
       setIsAuthenticated(localStorage.getItem("user") !== null);

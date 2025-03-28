@@ -4,9 +4,11 @@ import { FaCircleUser } from "react-icons/fa6";
 
 const Nav = () => {
 
-  const [display, setDisplay] = useState(false);
+  const [display, setDisplay] = useState(false); // State to manage the visibility of the dropdown menu
   const navigate = useNavigate();
 
+  // Function to handle logout
+  // It removes the user data from local storage and navigates to the home page
   const handleLogout = () => {
     localStorage.removeItem('user');
     setDisplay(false);
